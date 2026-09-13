@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Local trading account simulation">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Trading Dashboard Simulation</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f8fb;color:#202b3d;font-family:Arial,Helvetica,sans-serif}
+.app{max-width:430px;margin:auto;min-height:100vh;background:#f7f9fc;box-shadow:0 0 20px #00000012}
+.top{height:74px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #e4e7ec}
+.menu{font-size:29px;color:#687384}.title{font-size:27px;margin-left:18px}.user{font-size:34px;color:#e88919}
+.hero{text-align:center;background:#fff;padding:28px 12px 22px}.net{font-size:29px}.net b{font-weight:500}.gl{margin-top:34px;font-size:27px}.green{color:#099447;font-weight:700}
+.pos{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:24px 22px;border-top:1px solid #e7eaf0}.pos h2{font-size:27px;font-weight:400;margin:0}.posright{text-align:right;font-size:28px}.small{font-size:17px;color:#687384;font-weight:400;margin-top:4px}
+.orders{text-align:center;background:#fff;padding:20px 10px;font-size:23px;border-top:1px solid #e7eaf0}
+.ordergrid{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-top:1px solid #e7eaf0}.ordergrid div{text-align:center;padding:14px 4px;font-size:19px;border-right:1px solid #e7eaf0}.ordergrid div:last-child{border:0}
+.selector{background:#fff;margin-top:18px;padding:14px 15px;font-size:20px;border-top:1px solid #e7eaf0;border-bottom:1px solid #e7eaf0}.selector span{color:#687384;font-size:15px}
+.metrics{padding:0 20px;background:#f7f9fc}.metric{display:flex;justify-content:space-between;gap:12px;padding:17px 0;border-bottom:1px solid #e2e6ec;font-size:20px}.metric .value{font-size:23px;font-weight:700;white-space:nowrap;text-align:right}.hint{font-size:15px;color:#788392;margin-top:5px}
+.nav{position:sticky;bottom:0;display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border-top:1px solid #ddd;padding-bottom:calc(5px + env(safe-area-inset-bottom))}
+.nav button{border:0;background:none;color:#657083;font-size:11px;padding:9px 1px 5px}.nav button.active{color:#e88919}.ico{display:block;font-size:25px;line-height:27px;margin-bottom:4px}
+.sim{background:#fff;text-align:center;color:#697586;font-size:10px;letter-spacing:.08em;padding:6px}
+@media(min-width:700px){body{padding:20px}.app{border-radius:18px;overflow:hidden;min-height:auto}}
+</style>
+</head>
+<body>
+<main class="app">
+<header class="top">
+  <div><span class="menu">☰</span><span class="title">Dashboard</span></div>
+  <span class="user">♙</span>
+</header>
+<section class="hero">
+  <div class="net">Net Holdings&nbsp; <b>₹ 0.0</b></div>
+  <div class="gl">Unrealized G/L</div>
+  <div class="green" style="font-size:31px;margin-top:3px">0.0 (0.0%)</div>
+</section>
+<section class="pos">
+  <h2>Position Summary</h2>
+  <div class="posright green">₹ 0.0<div class="small">0 Scrips</div></div>
+</section>
+<section class="orders">Total Orders : --</section>
+<section class="ordergrid">
+  <div>Executed<br><span class="small">--</span></div>
+  <div>Open<br><span class="small">--</span></div>
+  <div>Others<br><span class="small">--</span></div>
+</section>
+<div class="selector"><b>ALL</b>&nbsp;&nbsp;▼ <span>( Segment | Exchange | Product )</span></div>
+<section class="metrics">
+  <div class="metric"><div>Cash Margin<div class="hint">(Cash Margin + Notional Cash + Adhoc)</div></div><div class="value">₹ 31,400.00</div></div>
+  <div class="metric"><div>Collateral<div class="hint">(Holding + Pledge + Direct + MTF)</div></div><div class="value">₹ 0</div></div>
+  <div class="metric"><div>Total Margin</div><div class="value">₹ 31,400.00</div></div>
+  <div class="metric"><div>Used Margin</div><div class="value">₹ 0.00</div></div>
+  <div class="metric"><div>Net Margin Avail</div><div class="value">₹ 31,400.00</div></div>
+  <div class="metric"><div>PayIn</div><div class="value">₹ 0.00</div></div>
+  <div class="metric"><div>PayOut</div><div class="value">₹ 0.00</div></div>
+</section>
+<nav class="nav" aria-label="Navigation">
+  <button><span class="ico">↗</span>MARKET</button>
+  <button><span class="ico">⌕</span>MARKETWATCH</button>
+  <button class="active"><span class="ico">▥</span>DASHBOARD</button>
+  <button><span class="ico">⌘</span>POSITION</button>
+  <button><span class="ico">▣</span>ORDERS</button>
+</nav>
+<div class="sim">SIMULATION • LOCAL DATA • NO BROKER CONNECTION</div>
+</main>
+<script>
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(()=>{});
+</script>
+</body>
+</html>
