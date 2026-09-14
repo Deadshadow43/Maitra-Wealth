@@ -1,0 +1,1 @@
+const C="trading-sim-login-v1";self.addEventListener("install",e=>e.waitUntil(caches.open(C).then(c=>c.addAll(["./","./index.html","./manifest.webmanifest"]))))
